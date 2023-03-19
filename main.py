@@ -56,7 +56,7 @@ if __name__ == '__main__':
         if particle_generated.particle_data["coords"][0] > width or particle_generated.particle_data["coords"][0] < 0 or particle_generated.particle_data["coords"][1] > height or particle_generated.particle_data["coords"][1] < 0:
             particle_generated.particle_data["is_seen_on_screen"] = False
 
-        # particle movement. the particle moves along the vector which is particle_data["speed_direction"] radians from the positive x-axis
+        # particle movement. the particle moves along the vector which is particle_data["speed_direction"] degrees from the positive x-axis
         if particle_generated.particle_data["is_seen_on_screen"]:
             particle_generated.particle_data["coords"][0] += particle_generated.particle_data["speed"] * math.cos(math.radians(particle_generated.particle_data["speed_direction"]))
             particle_generated.particle_data["coords"][1] += particle_generated.particle_data["speed"] * math.sin(math.radians(particle_generated.particle_data["speed_direction"]))
