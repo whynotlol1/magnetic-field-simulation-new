@@ -27,3 +27,6 @@ oversimplified simulation of magnetic field lines of a magnet (in the future I'l
 
 15.03.23:
 - finally realised the magnet's impact on particle
+
+21.03.23:
+- commented everything
