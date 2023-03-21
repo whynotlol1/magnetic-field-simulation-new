@@ -4,7 +4,7 @@ import pygame
 import scipy.integrate as integrate
 from particles import Particle
 
-
+# pygame window initialization
 pygame.init()
 standart = height = width = 800
 screen = pygame.display.set_mode((height, width))
@@ -12,6 +12,7 @@ pygame.display.set_caption("magnetic field simulation")
 pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
+# magnet data initialization
 magnet_standart = 25
 magnet_data = {
     "coords": [375, 375],
@@ -20,6 +21,7 @@ magnet_data = {
     "magnetic_lines_direction": "up-down"
 }
 
+# particle data initialization (using Particle class)
 particle_generated = Particle([0, 0], 0, 0.0, "", (1.6 * 10 ** -19), (1.6 * 10 * -27), False)
 
 if __name__ == '__main__':
@@ -30,12 +32,18 @@ if __name__ == '__main__':
         screen.fill((255, 255, 255))
         text_surface = my_font.render(f'magnet strength (induction): {round(magnet_data["strength"], 2)}', False, (0, 0, 0))
         screen.blit(text_surface, (0, 0))
+
+        # showing data about what magnetic field the viewer sees
         if magnet_data["magnetic_lines_direction"] == "up-down":
             text_surface = my_font.render(f'magnet pole the viewer sees: N', False, (0, 0, 0))
         else:
             text_surface = my_font.render(f'magnet pole the viewer sees: S', False, (0, 0, 0))
         screen.blit(text_surface, (0, 50))
+
+        # magnet
         pygame.draw.rect(screen, (0, 0, 0), (magnet_data["coords"][0] - magnet_standart / 2, magnet_data["coords"][1] - magnet_standart / 2, magnet_standart, magnet_standart))
+
+        # magnetic field
         param = integrate.quad(lambda x: magnet_data["strength"] * standart, 0, magnet_data["strength"])[0]
         for i in range(0, width, 5):
             for j in range(0, height, 5):
@@ -73,9 +81,11 @@ if __name__ == '__main__':
                     particle_generated.particle_data["speed_direction"] += (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 21
                 else:
                     particle_generated.particle_data["speed_direction"] -= (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 21
+
         # controls
         keys = pygame.key.get_pressed()
 
+        # moving the magnet
         if keys[pygame.K_w] and magnet_data["coords"][1] > 0 + magnet_standart / 2:
             magnet_data["coords"][1] -= magnet_data["moving_speed"]
         if keys[pygame.K_s] and magnet_data["coords"][1] < height - magnet_standart / 2:
@@ -85,6 +95,7 @@ if __name__ == '__main__':
         if keys[pygame.K_a] and magnet_data["coords"][0] > 0 + magnet_standart / 2:
             magnet_data["coords"][0] -= magnet_data["moving_speed"]
 
+        # increasing or decreasing the magnet induction
         if keys[pygame.K_1]:
             magnet_data["strength"] += 0.01
             time.sleep(0.2)
@@ -92,10 +103,12 @@ if __name__ == '__main__':
             magnet_data["strength"] = magnet_data["strength"] - 0.01 if magnet_data["strength"] > 0.35 else magnet_data["strength"]
             time.sleep(0.2)
 
+        # changing the magnet fields
         if keys[pygame.K_q]:
             magnet_data["magnetic_lines_direction"] = "up-down" if magnet_data["magnetic_lines_direction"] == "down-up" else "down-up"
             time.sleep(0.2)
 
+        # summoning the positive charged particle
         if keys[pygame.K_EQUALS]:
             if not particle_generated.particle_data["is_seen_on_screen"]:
                 particle_generated.particle_data["coords"] = [0, 0]
@@ -104,6 +117,7 @@ if __name__ == '__main__':
                 particle_generated.particle_data["speed_direction"] = 45
                 particle_generated.particle_data["speed"] = 0.5
 
+        # summoning the negative charged particle
         if keys[pygame.K_MINUS]:
             if not particle_generated.particle_data["is_seen_on_screen"]:
                 particle_generated.particle_data["coords"] = [0, 0]
@@ -114,8 +128,8 @@ if __name__ == '__main__':
 
         pygame.display.update()
 
+        # quitting
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
