@@ -11,7 +11,7 @@ oversimplified simulation of magnetic field lines of a magnet (in the future I'l
 **changelog**:
 
 05.03.23:
-- added the simplest gravitation simulation (activate with [Q], disabled by default)
+- ~~added the simplest gravitation simulation (activate with [Q], disabled by default)~~
 
 08.03.23#1:
 - removed the 2nd magnet, now working on only 1 magnet
@@ -26,7 +26,7 @@ oversimplified simulation of magnetic field lines of a magnet (in the future I'l
 - reworked particle's movement in the magnetic field and kinda made it work
 
 15.03.23:
-- finally realised the magnet's impact on particle
+- finally made the magnet's impact on particle work
 
 21.03.23:
 - commented everything
