@@ -1,4 +1,4 @@
-oversimplified simulation of magnetic field lines of a magnet (in the future I'll work a bit more on that project)
+oversimplified simulation of magnetic field lines of a magnet ~~(in the future I'll work a bit more on that project)~~ (the project is abandoned for now)
 
 **controls**:
 - moving magnet: [W,A,S,D]
