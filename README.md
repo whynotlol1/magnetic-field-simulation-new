@@ -4,7 +4,7 @@ oversimplified simulation of magnetic field lines of a magnet (in the future I'l
 - moving magnet: [W,A,S,D]
 - increasing magnet strength: [1]
 - decreasing magnet strength: [2]
-- activating/deactivating the gravitation simulation: [Q]
+- changing the magnet induction lines' direction: [Q]
 - summoning a positive charged particle: [+ (EQUALS key)]
 - summoning a negative charged particle: [-]
 
