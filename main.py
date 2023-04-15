@@ -10,7 +10,7 @@ standart = height = width = 800
 screen = pygame.display.set_mode((height, width))
 pygame.display.set_caption("magnetic field simulation")
 pygame.font.init()
-my_font = pygame.font.SysFont('Comic Sans MS', 30)
+my_font = pygame.font.SysFont('Roboto', 30)
 
 # magnet data initialization
 magnet_standart = 25
@@ -38,7 +38,7 @@ if __name__ == '__main__':
             text_surface = my_font.render(f'magnet pole the viewer sees: N', False, (0, 0, 0))
         else:
             text_surface = my_font.render(f'magnet pole the viewer sees: S', False, (0, 0, 0))
-        screen.blit(text_surface, (0, 50))
+        screen.blit(text_surface, (0, 25))
 
         # magnet
         pygame.draw.rect(screen, (0, 0, 0), (magnet_data["coords"][0] - magnet_standart / 2, magnet_data["coords"][1] - magnet_standart / 2, magnet_standart, magnet_standart))
@@ -73,14 +73,14 @@ if __name__ == '__main__':
         if math.sqrt((particle_generated.particle_data["coords"][0] - magnet_data["coords"][0]) ** 2 + (particle_generated.particle_data["coords"][1] - magnet_data["coords"][1]) ** 2) < param:
             if magnet_data["magnetic_lines_direction"] == "up-down":
                 if particle_generated.particle_data["charge_sign"] == "+":
-                    particle_generated.particle_data["speed_direction"] -= (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 21
+                    particle_generated.particle_data["speed_direction"] -= (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 20.5
                 else:
-                    particle_generated.particle_data["speed_direction"] += (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 21
+                    particle_generated.particle_data["speed_direction"] += (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 20.5
             else:
                 if particle_generated.particle_data["charge_sign"] == "+":
-                    particle_generated.particle_data["speed_direction"] += (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 21
+                    particle_generated.particle_data["speed_direction"] += (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 20.5
                 else:
-                    particle_generated.particle_data["speed_direction"] -= (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 21
+                    particle_generated.particle_data["speed_direction"] -= (particle_generated.particle_data["charge_value"] * magnet_data["strength"]) / particle_generated.particle_data["mass"] * 10 ** 20.5
 
         # controls
         keys = pygame.key.get_pressed()
