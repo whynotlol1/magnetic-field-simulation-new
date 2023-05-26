@@ -1,4 +1,4 @@
-oversimplified simulation of magnetic field lines of a magnet ~~(in the future I'll work a bit more on that project)~~ (the project is abandoned for now)
+oversimplified simulation of magnetic field of a magnet and it's impat on a particle ~~(in the future I'll work a bit more on that project)~~ (the project is abandoned for now)
 
 **controls**:
 - moving magnet: [W,A,S,D]
